@@ -1,7 +1,8 @@
-<h1>Sign Up Here!</h1>
+<h1>Login!</h1>
+
 <%= render 'layouts/errors' %>
 
-<form action='<%= users_url %>' method='post'>
+<form action='<%= session_url %>' method='post'>
   <input type='hidden'
           name='authenticity_token'
           value=<%= form_authenticity_token %>>
@@ -14,5 +15,5 @@
   <input type='password' name='user[password]' value=''>
   </br>
 
-  <input type='submit' value='Sign Up'>
+  <input type='submit' value='Login'>
 </form>
