@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      #login!(@user)
-      #redirect_to index
+      log_in_user!(@user)
+      redirect_to :index
     else
       flash[:notice] = "jdfklajkldajglkajgad"
       render :new
