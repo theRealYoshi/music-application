@@ -10,6 +10,7 @@
   </ul>
 <% end %>
 
-
-<%= link_to "Edit this Album", edit_album_url(@album) %> 
+<%= link_to "Add a Track", new_album_track_url(@album) %>
+<br>
+<%= link_to "Edit this Album", edit_album_url(@album) %>
 <%= link_to "All Bands", bands_url %>

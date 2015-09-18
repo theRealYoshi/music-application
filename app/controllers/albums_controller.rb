@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
-
+  before_action :require_login
+  
   def new
     @bands = Band.all
     @current_band = Band.find(params[:band_id])

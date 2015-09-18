@@ -1,6 +1,7 @@
 class BandsController < ApplicationController
 
   before_action :check_for_bands, only: [:edit, :destroy]
+  before_action :require_login
 
   def index
     @bands = Band.all
@@ -48,7 +49,7 @@ class BandsController < ApplicationController
     if !Band.all.nil?
       @bands = Band.all
     else
-      flash[:errors] = "No bands to edit"
+      flash[:errors] = ["No bands to edit"]
     end
   end
 
@@ -57,5 +58,7 @@ class BandsController < ApplicationController
     def band_params
       params.require(:band).permit(:name)
     end
+
+
 
 end

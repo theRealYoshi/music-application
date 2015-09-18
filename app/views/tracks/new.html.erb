@@ -1,0 +1,39 @@
+<h1>Create a new track</h1>
+
+<%= render 'layouts/errors' %>
+
+<form action='<%= tracks_url %>' method='post'>
+  <input type='hidden'
+          name='authenticity_token'
+          value=<%= form_authenticity_token %>>
+  <!-- <input type='hidden' name='_method' value='patch' -->
+  <label>Which album?</label>
+  <select name='track[album_id]'>
+    <% @albums.each do |album| %>
+      <% if album.id == @album.id %>
+        <option value='<%= album.id %>' selected='selected'><%= album.title %></option>
+      <% else %>
+        <option value='<%= album.id %>'><%= album.title %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <br>
+  <label>Track title</label>
+  <input type='text' name='track[track_title]' value=''>
+  </br>
+
+  <label>Track Type</label>
+  </br>
+  <input type='radio' name='track[track_type]' value='BONUS'>BONUS<br>
+  <input type='radio' name='track[track_type]' value='REGULAR'>REGULAR
+  </br>
+
+  <label>Lyrics</label>
+  <textarea name='track[lyrics]' rows='5' columns='50'>
+    Type in here
+  </textarea>
+
+  <input type='submit' value='Add Track'>
+</form>
+
+<%= link_to "All Bands", bands_url %>
