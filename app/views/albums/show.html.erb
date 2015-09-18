@@ -1,0 +1,15 @@
+<h1><%= link_to @album.title, album_url(@album.id) %></h1>
+<h2>by</h2>
+<h2><%= link_to @album.band.name, band_url(@album.band) %></h2>
+
+<% @album.tracks.each do |track| %>
+  <ul>
+    <li><%= link_to track.track_title, track_url(track) %></li>
+    <li><%= track.track_type %></li>
+    <li><%= track.lyrics %></li>
+  </ul>
+<% end %>
+
+
+<%= link_to "Edit this Album", edit_album_url(@album) %> 
+<%= link_to "All Bands", bands_url %>

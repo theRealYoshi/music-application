@@ -1,0 +1,34 @@
+<h1>Create a new album</h1>
+
+<%= render 'layouts/errors' %>
+
+<form action='<%= albums_url %>' method='post'>
+  <input type='hidden'
+          name='authenticity_token'
+          value=<%= form_authenticity_token %>>
+  <!-- <input type='hidden' name='_method' value='patch' -->
+  <label>Which band</label>
+  <select name='album[band_id]'>
+    <% @bands.each do |band| %>
+      <% if band.id == @current_band.id %>
+        <option value='<%= band.id %>' selected='selected'><%= band.name %></option>
+      <% else %>
+        <option value='<%= band.id %>'><%= band.name %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <br>
+  <label>Album title</label>
+  <input type='text' name='album[title]' value=''>
+  </br>
+
+  <label>Performance Type</label>
+  </br>
+  <input type='radio' name='album[performance]' value='LIVE'>LIVE<br>
+  <input type='radio' name='album[performance]' value='STUDIO'>STUDIO
+  </br>
+
+  <input type='submit' value='Add Album'>
+</form>
+
+<%= link_to "All Bands", bands_url %>
