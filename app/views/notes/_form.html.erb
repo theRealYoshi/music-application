@@ -1,9 +1,8 @@
-<form action='<%= notes_url %>' method='post'>
-  <input type=''
-         name= ''
-         value='<%= form_authentication_token %>'>
-  <input type='hidden' name='_method' value='patch'>
-  <textarea name='note[note]'>
+<form action='<%= track_notes_url(@track) %>' method='POST'>
+  <%= auth_token %>
+  <textarea name='note[long_note]'>
     Type in here
   </textarea>
+
+  <input type='submit' value="Create Note">
 </form>

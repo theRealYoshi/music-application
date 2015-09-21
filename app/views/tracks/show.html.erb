@@ -14,3 +14,8 @@
 <br>
 <%= link_to "Album", album_url(@track.album_id) %>
 <%= link_to "All Bands", bands_url %>
+
+<%= render 'notes/form' %>
+
+<h3>Track Notes<h3>
+<%= render 'notes/note' %>

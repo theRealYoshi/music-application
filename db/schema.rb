@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150918013104) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "albums", force: :cascade do |t|
     t.integer  "band_id",     null: false
     t.string   "performance", null: false
@@ -24,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150918013104) do
     t.string   "title"
   end
 
-  add_index "albums", ["band_id"], name: "index_albums_on_band_id", using: :btree
+  add_index "albums", ["band_id"], name: "index_albums_on_band_id"
 
   create_table "bands", force: :cascade do |t|
     t.string   "name",       null: false
@@ -36,12 +33,12 @@ ActiveRecord::Schema.define(version: 20150918013104) do
     t.text     "long_note",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id",    null: false
-    t.integer  "track_id",   null: false
+    t.integer  "user_id"
+    t.integer  "track_id"
   end
 
-  add_index "notes", ["track_id"], name: "index_notes_on_track_id", using: :btree
-  add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
+  add_index "notes", ["track_id"], name: "index_notes_on_track_id"
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id"
 
   create_table "tracks", force: :cascade do |t|
     t.integer  "album_id",    null: false
@@ -52,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150918013104) do
     t.string   "track_title"
   end
 
-  add_index "tracks", ["album_id"], name: "index_tracks_on_album_id", using: :btree
+  add_index "tracks", ["album_id"], name: "index_tracks_on_album_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -62,8 +59,6 @@ ActiveRecord::Schema.define(version: 20150918013104) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
+  add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true
 
-  add_foreign_key "albums", "bands"
-  add_foreign_key "tracks", "albums"
 end
